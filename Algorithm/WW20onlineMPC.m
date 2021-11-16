@@ -3,11 +3,11 @@ clear; close all; clc;
 % Recebe as matrizes A,B,L,Pi_estimated,K,
 % as condições iniciais alpha, phi e phi_dot
 % e os parâmetros Delta, delta, tmax, mu e tau
-addpath 'C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\WW20_Fig1'
-addpath 'C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\WW20_Fig3'
-addpath 'C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\GL20_Fig3'
-addpath 'C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\ZH15'
-addpath 'C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\functions'
+addpath 'WW20_Fig1'
+%addpath 'WW20_Fig3'
+addpath 'GL20_Fig3'
+addpath 'ZH15'
+addpath 'functions'
 %start_WW20_Fig1
 %start_GL20_Fig3
 start_ZH15
@@ -17,8 +17,8 @@ horizon = 100;
 
 Kdelta = 0.5;
 Kvector1 = -2:0.5:2;
-DATA_MINING = 1;
-SAVE_DATA = 1;
+DATA_MINING = 0;
+SAVE_DATA = 0;
 ONLINE = 1;
 MPC = 1;
 DECENTRALIZED = 0;
@@ -87,8 +87,9 @@ end
 %max_sim = 100; %Para validacao cruzada
 cnt = 1;
 % OFFLINE TRAINING LOOP
-for j = 10:10:200
-    horizon = j;
+%for j = 10:10:200
+    %horizon = j;
+ for j = 1:1
     text = [t tmax:tdelta:(tmax+horizon*tdelta)];
     %nNeurons = j;
     clear Jdata net
@@ -220,17 +221,17 @@ for j = 10:10:200
 
     end
     %For cross validation
-    error = state;% - [alpha';0;0;0];
-    serror = error.^2;
-
-    MSE(:,cnt) =  sum( serror' )/max_sim ;
-    for st = 1:6
-        info = stepinfo(state(st,:),t);
-        settling_time(st,cnt) = info.SettlingTime;
-    end
-    MSEn(cnt) = norm(MSE(:,cnt));
-    
-    Jfinal(j) = state(:,i)'*state(:,i);
+%     error = state;% - [alpha';0;0;0];
+%     serror = error.^2;
+% 
+%     MSE(:,cnt) =  sum( serror' )/max_sim ;
+%     for st = 1:6
+%         info = stepinfo(state(st,:),t);
+%         settling_time(st,cnt) = info.SettlingTime;
+%     end
+%     MSEn(cnt) = norm(MSE(:,cnt));
+%     
+%     Jfinal(j) = state(:,i)'*state(:,i);
 
     %current_sim = j/length(Kvector)*100;
     current_sim = j;
@@ -296,7 +297,7 @@ legend('a1','a2','a3')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% SAVE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if SAVE_DATA == 1
     comment = ['This simulation was perform with:' newline];
-    comment = [comment 'horizon = 10:10:200, general nonlinear']; %Include here what is different for this sim
+    comment = [comment '']; %Include here what is different for this sim
     clocktime = clock;
     time_now = [num2str(clocktime(1)) '-' num2str(clocktime(2)) '-' num2str(clocktime(3)) '-' num2str(clocktime(4)) '-' num2str(clocktime(5))];
     savefolderlocal = [save_folder '\' save_mainname time_now];
