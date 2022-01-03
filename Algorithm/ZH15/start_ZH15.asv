@@ -53,9 +53,13 @@ vdynamic_function = [vdynamic_function 'vstate((agent-1)*n+1:agent*n,vtime) = is
 vdynamic_function = [vdynamic_function 'end' newline];
 
 
-dynamic_function0 = 'state0(:,i) = A*state0(:,i-1) + [sin( [1 0]*state0(:,i-1)  );1 - cos( [0 1]*state0(:,i-1) )];';
-vdynamic_function0 = 'vstate0(:,vtime) = A*vstate0(:,vtime-1) + [sin( [1 0]*vstate0(:,vtime-1)  );1 - cos( [0 1]*vstate0(:,vtime-1) )];';
+dynamic_function0 = 'state0(:,i) = A*state0(:,i-1) + [sin( [1 0]*state0(:,i-1) + 0*((agent-1)*m+1:agent*m) );1 - cos( [0 1]*state0(:,i-1) + 0*((agent-1)*m+1:agent*m) )];';
 
+vdynamic_function0 = ['for agent = 1:N' newline];
+vdynamic_function0 = [vdynamic_function 'istate0(:,agent) = vstate0((agent-1)*n+1:agent*n,vtime-1);' newline];
+vdynamic_function0 = [vdynamic_function 'istatenext0(:,agent) = A*istate0(:,agent) + [sin( [1 0]*istate0(:,agent) + 0*((agent-1)*m+1:agent*m) );1 - cos( [0 1]*istate0(:,agent) + 0*((agent-1)*m+1:agent*m) )];' newline];
+vdynamic_function0 = [vdynamic_function 'vstate0((agent-1)*n+1:agent*n,vtime) = istatenext0(:,agent);' newline];
+vdynamic_function0 = [vdynamic_function 'end' newline];
 
 tdelta = 1;
 % SAVE NAME

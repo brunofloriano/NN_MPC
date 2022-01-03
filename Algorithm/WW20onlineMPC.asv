@@ -8,10 +8,9 @@ addpath 'WW20_Fig1'
 addpath 'GL20_Fig3'
 addpath 'ZH15'
 addpath 'functions'
-
-start_WW20_Fig1
+%start_WW20_Fig1
 %start_GL20_Fig3
-%start_ZH15
+start_ZH15
 
 %%%%%%%%%%%%%%%%%%% CHOOSE SIMULATION PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%
 horizon = 100;
@@ -196,7 +195,7 @@ cnt = 1;
                         eval(vdynamic_function);
                         eval(vdynamic_function0);
                     end
-                    e = vstate(:,vtime) - kron(ones(N,1),vstate0(:,vtime));
+                    e = vstate(:,vtime) - kron(vstate0(:,vtime);
                     Jinst(vtime,s) = 0.5*e'*kron((L{s}+L{s}'),eye(n))*e;
                     %Jinst(vtime,s) = 0.5*vstate(:,vtime)'*kron((L{s}+L{s}'),eye(n))*vstate(:,vtime);
                     %Jinst(vtime,s) = vstate(:,vtime)'*kron((L{1}),eye(n))*vstate(:,vtime);

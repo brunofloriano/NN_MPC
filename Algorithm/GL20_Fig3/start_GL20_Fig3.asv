@@ -37,7 +37,7 @@ dynamic_function = 'state(:,i) = state(:,i-1) + tdelta*(Aaug*state(:,i-1) + Baug
 vdynamic_function = 'vstate(:,vtime) = vstate(:,vtime-1) + tdelta*(Aaug*vstate(:,vtime-1) + Baug*vu + 0.01*sin(vstate(:,vtime-1)) + kron(ones(4,1),eye(2))*Bw*[0.02*sin(text(i-1+vtime));0.02*cos(text(i-1+vtime))]);';
 
 dynamic_function0 = 'state0(:,i) = state0(:,i-1) + tdelta*(A*state0(:,i-1) + 0.01*sin(state0(:,i-1)) + Bw*[0.02*sin(t(i));0.02*cos(t(i))] );';
-vdynamic_function0 = 'vstate0(:,vtime) = vstate0(:,vtime-1) + tdelta*(A*vstate0(:,vtime-1) + 0.01*sin(vstate0(:,vtime-1)) + Bw*[0.02*sin(text(i-1+vtime));0.02*cos(text(i-1+vtime))]);';
+vdynamic_function0 = 'vstate0(:,vtime) = vstate0(:,vtime-1) + tdelta*(A*vstate0(:,vtime-1) + 0.01*sin(vstate0(:,vtime-1)) + kron(ones(4,1),eye(2))*Bw*[0.02*sin(text(i-1+vtime));0.02*cos(text(i-1+vtime))]);';
 nNeurons = 10;
 tdelta = 0.01;
 % SAVE NAME

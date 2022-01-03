@@ -48,6 +48,9 @@ tau = 0;
 % DYNAMIC SYSTEM
 dynamic_function = 'state(:,i) = state(:,i-1) + tdelta*(Aaug*state(:,i-1) + Baug*u);';
 vdynamic_function = 'vstate(:,vtime) = vstate(:,vtime-1) + tdelta*(Aaug*vstate(:,vtime-1) + Baug*vu);';
+
+dynamic_function0 = 'state0(:,i) = state0(:,i-1) + tdelta*(A*state0(:,i-1));';
+vdynamic_function0 = 'vstate0(:,vtime) = vstate0(:,vtime-1) + tdelta*(A*vstate0(:,vtime-1));';
 nNeurons = 4;
 tdelta = 0.01;
 % SAVE NAME
