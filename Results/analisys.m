@@ -4,22 +4,22 @@ SS16 = load('WW20_Fig1\SS16\SS16originaldata.mat');
 GL20 = load('GL20_Fig3\GL20originaldata.mat');
 
 %PMPCNN{5} = load('C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\results\dataSS16nKMPC 2021-4-7-17-54\dataSS16nKMPC 2021-4-7-17-54.mat');
-PMPCNN{1} = load('results\dataWW20_Linear_Pi_1\dataWW20nKMPC 2021-9-23-14-41.mat'); %Pi_1
-PMPCNN{2} = load('results\dataWW20_Linear_Pi_2\dataWW20nKMPC 2021-9-23-14-48.mat'); %Pi_2
-PMPCNN{3} = load('results\dataWW20_Linear_Pi_3\dataWW20nKMPC 2021-9-23-14-54.mat'); %Pi_3
-PMPCNN{4} = load('results\dataWW20_Linear_Pi_4\dataWW20nKMPC 2021-9-23-15-10.mat'); %Pi_4
+PMPCNN{1} = load('results\dataWW20_Pi_1\dataWW20nKMPC 2021-9-23-14-41.mat'); %Pi_1
+PMPCNN{2} = load('results\dataWW20_Pi_2\dataWW20nKMPC 2021-9-23-14-48.mat'); %Pi_2
+PMPCNN{3} = load('results\dataWW20_Pi_3\dataWW20nKMPC 2021-9-23-14-54.mat'); %Pi_3
+PMPCNN{4} = load('results\dataWW20_Pi_4\dataWW20nKMPC 2021-9-23-15-10.mat'); %Pi_4
 MPCNN = PMPCNN{1};
 
-PMPCNNGL20{1} = load('results\dataGL20_Nonlinear_Pi_1\dataGL20nKMPC 2021-10-6-15-11.mat'); %Pi_1
-PMPCNNGL20{2} = load('results\dataGL20_Nonlinear_Pi_2\dataGL20nKMPC 2021-9-23-10-53.mat'); %Pi_2
-PMPCNNGL20{3} = load('results\dataGL20_Nonlinear_Pi_3\dataGL20nKMPC 2021-9-23-11-0.mat'); %Pi_3
-PMPCNNGL20{4} = load('results\dataGL20_Nonlinear_Pi_4\dataGL20nKMPC 2021-9-23-11-4.mat'); %Pi_4
+PMPCNNGL20{1} = load('results\dataGL20_Pi_1\dataGL20nKMPC 2021-10-6-15-11.mat'); %Pi_1
+PMPCNNGL20{2} = load('results\dataGL20_Pi_2\dataGL20nKMPC 2021-9-23-10-53.mat'); %Pi_2
+PMPCNNGL20{3} = load('results\dataGL20_Pi_3\dataGL20nKMPC 2021-9-23-11-0.mat'); %Pi_3
+PMPCNNGL20{4} = load('results\dataGL20_Pi_4\dataGL20nKMPC 2021-9-23-11-4.mat'); %Pi_4
 MPCNNGL20 = PMPCNNGL20{1};
 
-MPCNNZH15{1} = load('results\dataZH15_General_Nonlinear_Pi_1\dataZH15nKMPC 2021-10-25-10-52.mat'); %Pi_1
-MPCNNZH15{2} = load('results\dataZH15_General_Nonlinear_Pi_2\dataZH15nKMPC 2021-10-21-15-2.mat'); %Pi_2
-MPCNNZH15{3} = load('results\dataZH15_General_Nonlinear_Pi_3\dataZH15nKMPC 2021-10-25-10-56.mat'); %Pi_3
-MPCNNZH15{4} = load('results\dataZH15_General_Nonlinear_Pi_4\dataZH15nKMPC 2021-10-25-10-57.mat'); %Pi_4
+MPCNNZH15{1} = load('results\dataZH15_Pi_1\dataZH15nKMPC 2021-10-25-10-52.mat'); %Pi_1
+MPCNNZH15{2} = load('results\dataZH15_Pi_2\dataZH15nKMPC 2021-10-21-15-2.mat'); %Pi_2
+MPCNNZH15{3} = load('results\dataZH15_Pi_3\dataZH15nKMPC 2021-10-25-10-56.mat'); %Pi_3
+MPCNNZH15{4} = load('results\dataZH15_Pi_4\dataZH15nKMPC 2021-10-25-10-57.mat'); %Pi_4
 
 % SISTEMA LINEAR
 for i = 1:SS16.N*SS16.n

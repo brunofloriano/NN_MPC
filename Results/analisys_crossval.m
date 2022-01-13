@@ -1,5 +1,5 @@
 clear all; close all; clc;
-load('results\dataWW20_Linear_Crossval_50\dataWW20nKMPC 2021-7-22-10-59.mat') % Linear 50
+load('results\dataWW20_Crossval_50\dataWW20nKMPC 2021-7-22-10-59.mat') % Linear 50
 
 MSE1 = MSE;
 for i = 1:length(MSE1)
@@ -14,7 +14,7 @@ box off
 xlabel('m')
 ylabel('mse')
 
-load('results\dataWW20_Linear_Crossval_10\dataWW20nKMPC 2021-7-22-11-38.mat') % Linear 10
+load('results\dataWW20_Crossval_10\dataWW20nKMPC 2021-7-22-11-38.mat') % Linear 10
 
 MSE2 = MSE;
 for i = 1:length(MSE2)
@@ -38,7 +38,7 @@ box off
 xlabel('m')
 ylabel('mse')
 
-load('results\dataGL20_Nonlinear_Crossval\dataGL20nKMPC 2021-7-22-1-2.mat') % Nonlinear
+load('results\dataGL20_Crossval\dataGL20nKMPC 2021-7-22-1-2.mat') % Nonlinear
 MSEnl = MSE(:,1:69);
 for i = 1:length(MSEnl)
     MSEnlnorm(i) = norm(MSEnl(:,i));
@@ -53,7 +53,7 @@ box off
 xlabel('m')
 ylabel('mse')
 
-load('results\dataZH15_General_Nonlinear_Crossval\dataZH15nKMPC 2021-10-21-15-37.mat') % General Nonlinear
+load('results\dataZH15_Crossval\dataZH15nKMPC 2021-10-21-15-37.mat') % General Nonlinear
 MSEnl2 = MSE(:,1:50);
 for i = 1:length(MSEnl2)
     MSEnl2norm(i) = norm(MSEnl2(:,i));
@@ -68,9 +68,9 @@ box off
 xlabel('m')
 ylabel('mse')
 
-h_linear = load('results\dataWW20_Linear_Horizon\dataWW20nKMPC 2021-10-26-21-56.mat') % Linear
-h_nonlinear = load('results\dataGL20_Nonlinear_Horizon\dataGL20nKMPC 2021-10-27-15-11.mat') %Nonlinear
-h_gnonlinear = load('results\dataZH15_General_Nonlinear_Horizon\dataZH15nKMPC 2021-10-27-15-21.mat') % General Nonlinear
+h_linear = load('results\dataWW20_Horizon\dataWW20nKMPC 2021-10-26-21-56.mat') % Linear
+h_nonlinear = load('results\dataGL20_Horizon\dataGL20nKMPC 2021-10-27-15-11.mat') %Nonlinear
+h_gnonlinear = load('results\dataZH15_Horizon\dataZH15nKMPC 2021-10-27-15-21.mat') % General Nonlinear
 
 % h_linear = load('C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\results\dataWW20nKMPC 2021-11-3-15-25\dataWW20nKMPC 2021-11-3-15-25.mat') % Linear
 % h_nonlinear = load('C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\results\dataGL20nKMPC 2021-11-3-17-42\dataGL20nKMPC 2021-11-3-17-42.mat') %Nonlinear
