@@ -7,9 +7,9 @@ Folder includes the NN-based MPC algorithm to achieve consensus in MAS for linea
 ### How to run algorithm
 The main file is "WW20onlineMPC.m". In order to run uncomment line:
 
-* Line 12 - "start_WW20_Fig1" to run linear system (based on Wang et al. (2018));
-* Line 13 - "start_GL20_Fig3" to run system with disturbances (based on Gao et al. (2020));
-* Line 14 - "start_ZH15" to run nonlinear system (motivated by Zhong et al. (2015)).
+* Line 17 - "start_WW20_Fig1" to run linear system (based on Wang et al. (2018));
+* Line 18 - "start_GL20_Fig3" to run system with disturbances (based on Gao et al. (2020));
+* Line 19 - "start_ZH15" to run nonlinear system (motivated by Zhong et al. (2015)).
 
 The output is the evolution of the system's states over time.
 
