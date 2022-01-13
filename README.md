@@ -2,7 +2,7 @@
 Neural network-based (NN) Model Predictive Control (MPC) algorithm to control a multi-agent system (MAS) with stochastic communication topology.
 
 ## Algorithm folder
-Folder includes the NN-based MPC algorithm to achieve consensus for linear, nonlinear and general nonlinear MAS.
+Folder includes the NN-based MPC algorithm to achieve consensus in MAS for linear system, system with disturbances and nonlinear system.
 
 ### How to run algorithm
 The main file is "WW20onlineMPC.m". In order to run uncomment line:
