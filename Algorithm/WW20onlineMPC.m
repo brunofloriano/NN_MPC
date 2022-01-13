@@ -50,10 +50,6 @@ mc = dtmc(Psi);
 
 %%%%%%%%%%%%%%%%%%%% CONTROL SYSTEM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%K = [0 0;0 0];
-%Kdata = [0 0 0 0];
-%K = [0 0];
-%Kdata = [0 0];
 K = zeros(m,n);
 Kdata = zeros(1,m*n);
 
@@ -141,27 +137,18 @@ cnt = 1;
                 for k = 2:m*n
                     Ktest = combvec(Ktest,Kvector2(k,:));
                 end
-                %Ktest = combvec(Kvector2(1,:),Kvector2(2,:),Kvector2(3,:),Kvector2(4,:));
-                %Ktest = combvec(Kvector2(1,:),Kvector2(2,:));
                 y = net(Ktest);
                 [value,index] = min(abs(y));
                 Kline = Ktest(:,index)';
-                %Kall(i,:) = Kline;
-                %K = [Kline(1:2);Kline(3:4)];
-                %K = [Kline(1:2)];
                 K = vector2matrix(Kline,m,n);
                 Kdata(counter,:) = Kline;
                 Jdata(counter) = J(i-1);
 
-                %Khold = [Kdata(counter-1,1:2);Kdata(counter-1,3:4)];
-                %Khold = [Kdata(counter-1,1:2)];
                 Khold = vector2matrix(Kdata(counter-1,:),m,n);
                 Jmin = J(i-1);
                 counter = counter + 1;
             else
                 K = Khold;
-                %[valueJ,indexJ] = min(J);
-                %K = [Kall(indexJ,1:2);Kline(indexJ,3:4)];
             end
         end
 
@@ -180,8 +167,6 @@ cnt = 1;
             delayedstate = state(:,i-1-round(delay(i)/tdelta));
         end
         u = - kron(Laplacian,K)*delayedstate; % Eq. (4)
-        %state(:,i) = state(:,i-1) + tdelta*(Aaug*state(:,i-1) + Baug*u);
-        %state(:,i) = state(:,i-1) + tdelta*(Aaug*state(:,i-1) + Baug*u + 0.01*sin(state(:,i-1)) + kron(ones(4,1),eye(2))*Bw*[0.02*sin(t(i));0.02*cos(t(i))] );
         eval(dynamic_function); % Eq. (1) and (5) 
         eval(dynamic_function0);% Eq. (7)
         
@@ -196,23 +181,17 @@ cnt = 1;
                 for s = 1:S
                     if vtime > 1
                         vu = - kron(L{s},K)*vstate(:,vtime-1);
-                        %vstate(:,vtime) = vstate(:,vtime-1) + tdelta*(Aaug*vstate(:,vtime-1) + Baug*vu);
-                        %vstate(:,vtime) = vstate(:,vtime-1) + tdelta*(Aaug*vstate(:,vtime-1) + Baug*vu + 0.01*sin(vstate(:,vtime-1)) + kron(ones(4,1),eye(2))*Bw*[0.02*sin(text(i-1+vtime));0.02*cos(text(i-1+vtime))]);
                         eval(vdynamic_function);
                         eval(vdynamic_function0);
                     end
                     e = vstate(:,vtime) - kron(ones(N,1),vstate0(:,vtime)); % Eq. (8)
                     Jinst(vtime,s) = 0.5*e'*kron((L{s}+L{s}'),eye(n))*e; % Eq. (13)
-                    %Jinst(vtime,s) = 0.5*vstate(:,vtime)'*kron((L{s}+L{s}'),eye(n))*vstate(:,vtime);
-                    %Jinst(vtime,s) = vstate(:,vtime)'*kron((L{1}),eye(n))*vstate(:,vtime);
-                    %Jinst(vtime,s) = vstate(:,vtime)'*vstate(:,vtime);
                 end
                 
                 if vtime == 1
                     Jmean(vtime) = Jinst(vtime,theta);
                 else
                     Jmean(vtime) = sum(Jinst(vtime,:).*Psi(vmode(vtime-1),:)); % Eq. (14)
-                    %Jmean(vtime) = (Jinst(vtime,1));
                 end
                 
             end
