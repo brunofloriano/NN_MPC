@@ -5,11 +5,11 @@ Neural network-based (NN) Model Predictive Control (MPC) algorithm to control a 
 Folder includes the NN-based MPC algorithm to achieve consensus in MAS for linear system, system with disturbances and nonlinear system.
 
 ### How to run algorithm
-The main file is "WW20onlineMPC.m". In order to run uncomment line:
+The main file is "main.m". In order to run it, uncomment line:
 
-* Line 12 - "start_WW20_Fig1" to run linear system (based on Wang et al. (2018));
-* Line 13 - "start_GL20_Fig3" to run system with disturbances (based on Gao et al. (2020));
-* Line 14 - "start_ZH15" to run nonlinear system (motivated by Zhong et al. (2015)).
+* Line 17 - "start_WW20_Fig1" to run linear system (based on Wang et al. (2018));
+* Line 18 - "start_GL20_Fig3" to run system with disturbances (based on Gao et al. (2020));
+* Line 19 - "start_ZH15" to run nonlinear system (motivated by Zhong et al. (2015)).
 
 The output is the evolution of the system's states over time.
 
@@ -23,8 +23,8 @@ The subfolder "results" contain all the data (.mat) shown in the Results section
 * GL20: refers to the results of the system with disturbances
 * ZH15: refers to the results of the nonlinear system
 
-* Crossval: refers to the crossvalidation results
+* Crossval: refers to the cross-validation results
 * Horizon: refers to the results for different horizons
-* Pi_x: refers to the results with the transition matrix \Pi_x
+* Pi_x: refers to the results with the transition matrix \Pi = \Pi_x
 
-To generate the graphics of state's progression over time, run "analysis.m". To generate the crossvalidation and horizon graphics, run "analysis_crossval.m".
+To generate the graphics of state's progression over time, run "analysis.m". To generate the cross-validation and horizon graphics, run "analysis_crossval.m".
