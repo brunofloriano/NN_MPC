@@ -211,7 +211,7 @@ cnt = 1;
                 if vtime == 1
                     Jmean(vtime) = Jinst(vtime,theta);
                 else
-                    Jmean(vtime) = sum(Jinst(vtime,:).*Psi(vmode(vtime-1),:)); % Eq. (14)
+                    Jmean(vtime) = sum(Jinst(vtime,:).*Psi(vmode(vtime-1),:));
                     %Jmean(vtime) = (Jinst(vtime,1));
                 end
                 

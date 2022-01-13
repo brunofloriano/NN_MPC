@@ -21,7 +21,7 @@ MPCNNZH15{2} = load('results\dataZH15_Pi_2\dataZH15nKMPC 2021-10-21-15-2.mat'); 
 MPCNNZH15{3} = load('results\dataZH15_Pi_3\dataZH15nKMPC 2021-10-25-10-56.mat'); %Pi_3
 MPCNNZH15{4} = load('results\dataZH15_Pi_4\dataZH15nKMPC 2021-10-25-10-57.mat'); %Pi_4
 
-% SISTEMA LINEAR
+% LINEAR SYSTEM
 for i = 1:SS16.N*SS16.n
     SSS16 = stepinfo(SS16.state(i,:),SS16.t);
     settling_timeSS16(i) = SSS16.SettlingTime;
@@ -47,7 +47,7 @@ for j = 1:4
     dataPMPCNN = [dataPMPCNN [settling_timePMPCNN{j}'; mse_PMPCNN{j}'] ];
 end
 
-% SISTEMA NONLINEAR
+% SYSTEM WITH DISTURBANCES
 for i = 1:GL20.N*GL20.n    
     SGL20 = stepinfo(GL20.state(i,:),GL20.t);
     settling_timeGL20(i) = SGL20.SettlingTime;
@@ -71,7 +71,7 @@ for j = 1:4
     dataPMPCNNGL20 = [dataPMPCNNGL20 [settling_timePMPCNNGL20{j}'; mse_PMPCNNGL20{j}'] ];
 end
 
-% SISTEMA GENERAL NONLINEAR
+%  NONLINEAR SYSTEM
 dataZH15 = [];
 for j = 1:4
     for i = 1:MPCNNZH15{j}.N*MPCNNZH15{j}.n    
@@ -87,7 +87,6 @@ end
 percent_decreaseSS16 = -(settling_timeMPCNN - settling_timeSS16)./settling_timeSS16*100;
 percent_decreaseGL20 = -(settling_timeMPCNNGL20 - settling_timeGL20)./settling_timeGL20*100;
 
-% overshoot talvez nao faca sentido
 overshoot_decreaseSS16 = -(overshootMPCNN - overshootSS16)./overshootSS16*100;
 overshoot_decreaseGL20 = -(overshootMPCNNGL20 - overshootGL20)./overshootGL20*100;
 
