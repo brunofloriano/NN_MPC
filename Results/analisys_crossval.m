@@ -71,6 +71,8 @@ ylabel('mse')
 h_linear = load('results\dataWW20_Horizon\dataWW20nKMPC 2021-10-26-21-56.mat') % Linear
 h_nonlinear = load('results\dataGL20_Horizon\dataGL20nKMPC 2021-10-27-15-11.mat') %With disturbances
 h_gnonlinear = load('results\dataZH15_Horizon\dataZH15nKMPC 2021-10-27-15-21.mat') % Nonlinear
+h_car = load('results\dataCar_Horizon\dataCarnKMPC 2022-7-18-12-5.mat') % Car
+
 
 % h_linear = load('C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\results\dataWW20nKMPC 2021-11-3-15-25\dataWW20nKMPC 2021-11-3-15-25.mat') % Linear
 % h_nonlinear = load('C:\Users\PICHAU\OneDrive - unb.br (1)\Doutorado\Implementacao\results\dataGL20nKMPC 2021-11-3-17-42\dataGL20nKMPC 2021-11-3-17-42.mat') %Nonlinear
@@ -80,6 +82,8 @@ h_gnonlinear = load('results\dataZH15_Horizon\dataZH15nKMPC 2021-10-27-15-21.mat
 nh_linear.MSEn = normalize(h_linear.MSEn);
 nh_nonlinear.MSEn = normalize(h_nonlinear.MSEn);
 nh_gnonlinear.MSEn = normalize(h_gnonlinear.MSEn);
+nh_car.MSEn = normalize(h_car.MSEn);
+
 
 stdv = 1e5;
 for i = 1:length(h_nonlinear.MSEn)
@@ -88,6 +92,9 @@ for i = 1:length(h_nonlinear.MSEn)
     end
     if h_gnonlinear.MSEn(i) > stdv
         h_gnonlinear.MSEn(i) = stdv;
+    end
+    if h_car.MSEn(i) > stdv
+        h_car.MSEn(i) = stdv;
     end
     if h_linear.MSEn(i) > stdv
         h_linear.MSEn(i) = stdv;
@@ -110,6 +117,9 @@ for i = 1:length(nh_nonlinear.MSEn)
     if nh_gnonlinear.MSEn(i) > stdv
         nh_gnonlinear.MSEn(i) = stdv;
     end
+    if nh_car.MSEn(i) > stdv
+        nh_car.MSEn(i) = stdv;
+    end
     if nh_linear.MSEn(i) > stdv
         nh_linear.MSEn(i) = stdv;
     end
@@ -120,7 +130,8 @@ semilogy(vector,h_linear.MSEn,'k')
 hold on
 semilogy(h_nonlinear.MSEn,'--r')
 hold on 
-semilogy(h_gnonlinear.MSEn,'-.b')
+%semilogy(h_gnonlinear.MSEn,'-.b')
+semilogy(h_car.MSEn,'-.b')
 grid
 box off
 xlabel('horizon')

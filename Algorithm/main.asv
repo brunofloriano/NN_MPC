@@ -26,7 +26,7 @@ start_Car
 horizon = 100;
 Kdelta = 0.5;
 Kvector1 = -2:0.5:2;
-DATA_MINING = 1;
+DATA_MINING = 0;
 SAVE_DATA = 0;
 ONLINE = 1;
 MPC = 1;
@@ -218,23 +218,22 @@ for j = 1:100
         end
 
     end
+    %For cross validation
+    error = state;% - [alpha';0;0;0];
+    serror = error.^2;
 
+    MSE(:,cnt) =  sum( serror' )/length(state) ;
+    for st = 1:6
+        info = stepinfo(state(st,:),t);
+        settling_time(st,cnt) = info.SettlingTime;
+    end
+    MSEn(cnt) = norm(MSE(:,cnt));
+    
+    Jfinal(j) = state(:,i)'*state(:,i);
 
     %current_sim = j/length(Kvector)*100;
     current_sim = j;
     if DATA_MINING == 1
-        %For cross validation
-        error = state;% - [alpha';0;0;0];
-        serror = error.^2;
-        
-        MSE(:,cnt) =  sum( serror' )/length(state) ;
-        for st = 1:6
-            info = stepinfo(state(st,:),t);
-            settling_time(st,cnt) = info.SettlingTime;
-        end
-        MSEn(cnt) = norm(MSE(:,cnt));
-        
-        Jfinal(j) = state(:,i)'*state(:,i);
         fprintf('Sim is at %d %% \n',round(100*current_sim/max_sim));
     end
 cnt = cnt + 1;

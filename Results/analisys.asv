@@ -21,10 +21,10 @@ MPCNNZH15{2} = load('results\dataZH15_Pi_2\dataZH15nKMPC 2021-10-21-15-2.mat'); 
 MPCNNZH15{3} = load('results\dataZH15_Pi_3\dataZH15nKMPC 2021-10-25-10-56.mat'); %Pi_3
 MPCNNZH15{4} = load('results\dataZH15_Pi_4\dataZH15nKMPC 2021-10-25-10-57.mat'); %Pi_4
 
-MPCNNCar{1} = load('results\dataCar_Pi_1\dataCarnKMPC 2022-7-18-11-36.mat'); %Pi_1
-MPCNNCar{2} = load('results\dataCar_Pi_2\dataCarnKMPC 2022-7-18-11-47.mat'); %Pi_2
-MPCNNCar{3} = load('results\dataCar_Pi_3\dataCarnKMPC 2022-7-18-11-49.mat'); %Pi_3
-MPCNNCar{4} = load('results\dataCar_Pi_4\dataCarnKMPC 2022-7-18-11-49.mat'); %Pi_4
+MPCNNCar{1} = load('results\dataCar_Pi_1\dataCarnKMPC 2021-10-25-10-52.mat'); %Pi_1
+MPCNNCar{2} = load('results\dataCar_Pi_2\dataCarnKMPC 2021-10-21-15-2.mat'); %Pi_2
+MPCNNCar{3} = load('results\dataCar_Pi_3\dataCarnKMPC 2021-10-25-10-56.mat'); %Pi_3
+MPCNNCar{4} = load('results\dataCar_Pi_4\dataCarnKMPC 2021-10-25-10-57.mat'); %Pi_4
 
 % LINEAR SYSTEM
 for i = 1:SS16.N*SS16.n
@@ -88,18 +88,6 @@ for j = 1:4
     dataZH15 = [dataZH15 [settling_timeMPCNNZH15{j}'; mse_MPCNNZH15{j}'] ];
 end
 
-%  CAR
-dataCar = [];
-for j = 1:4
-    for i = 1:MPCNNCar{j}.N*MPCNNCar{j}.n    
-        SMPCNNCar{j} = stepinfo(MPCNNCar{j}.state(i,:),MPCNNCar{j}.t);
-        settling_timeMPCNNCar{j}(i) = SMPCNNCar{j}.SettlingTime;
-        overshootMPCNNCar{j}(i) = SMPCNNCar{j}.Overshoot;
-        mse_MPCNNCar{j}(i) = sum( (MPCNNCar{j}.state(i,:) - MPCNNCar{j}.state(i,end)).^2 )/length(MPCNNCar{j}.state(i,:));
-    end
-    dataCar = [dataCar [settling_timeMPCNNCar{j}'; mse_MPCNNCar{j}'] ];
-end
-
 
 percent_decreaseSS16 = -(settling_timeMPCNN - settling_timeSS16)./settling_timeSS16*100;
 percent_decreaseGL20 = -(settling_timeMPCNNGL20 - settling_timeGL20)./settling_timeGL20*100;
@@ -116,9 +104,8 @@ dataPMPCNN;
 dataGL20 = [settling_timeGL20' settling_timeMPCNNGL20' percent_decreaseGL20'; mse_GL20' mse_MPCNNGL20' mse_decreaseGL20'];
 dataPMPCNNGL20;
 dataZH15;
-dataCar;
 
-data = dataCar;
+data = dataPMPCNNGL20;
 fileID = fopen('latextext2.txt','w');
 latextext = data2latex(data,2)
 fprintf(fileID,latextext);
