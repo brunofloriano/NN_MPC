@@ -20,7 +20,7 @@ addpath 'functions'
 %start_ZH15
 
 Car_token = 0;
-start_Car
+%start_Car
 
 %%%%%%%%%%%%%%%%%%% CHOOSE SIMULATION PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%
 horizon = 100;
