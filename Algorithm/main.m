@@ -20,13 +20,13 @@ addpath 'functions'
 %start_ZH15
 
 Car_token = 0;
-%start_Car
+start_Car
 
 %%%%%%%%%%%%%%%%%%% CHOOSE SIMULATION PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%
 horizon = 100;
 Kdelta = 0.5;
 Kvector1 = -2:0.5:2;
-DATA_MINING = 1;
+DATA_MINING = 0;
 SAVE_DATA = 0;
 ONLINE = 1;
 MPC = 1;
@@ -86,7 +86,7 @@ mode = simulate(mc,(tmax)/Delta);
 Kvector = combvec(Kvector1,Kvector1,Kvector1,Kvector1);
 
 if DATA_MINING == 1 % for offline training
-    max_sim = 100; %length(Kvector);
+    max_sim = 70; %length(Kvector);
 else
     max_sim = 1;
 end
@@ -96,8 +96,8 @@ end
 %max_sim = 100; %For crossvalidation
 cnt = 1;
 % OFFLINE TRAINING LOOP
-for j = 1:100
-    horizon = j;
+for j = 1:max_sim
+    %horizon = j;
 % for j = 1:max_sim
     text = [t tmax:tdelta:(tmax+horizon*tdelta)];
     %nNeurons = j;
@@ -127,10 +127,11 @@ for j = 1:100
         
         % ONLINE LEARNING
         if ONLINE == 1
-            if i <= 100
+            if i <= 60
                 condition = true;
             else
-                condition = true; %mean(abs(J(i-100:i-1))) > 10; %J(i-1) >= -1e30
+                condition = true; %J(i-1) > 1e4; %mean(abs(J(i-100:i-1))) > 10; %J(i-1) >= -1e30
+                vf = 0;
             end
             
             if  condition
