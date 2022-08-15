@@ -130,13 +130,14 @@ semilogy(vector,h_linear.MSEn,'k')
 hold on
 semilogy(h_nonlinear.MSEn,'--r')
 hold on 
-%semilogy(h_gnonlinear.MSEn,'-.b')
-semilogy(h_car.MSEn,'-.b')
+semilogy(h_gnonlinear.MSEn,'-.b')
+semilogy(h_car.MSEn,':g')
 grid
 box off
 xlabel('horizon')
 ylabel('mse')
 legend('linear','nonlinear','gnonlinear')
+legend('linear','nonlinear','gnonlinear','gnonlinear2')
 
 % figure
 % plot(vector,h_linear.MSEn,'k')
