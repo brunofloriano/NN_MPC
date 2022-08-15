@@ -14,12 +14,12 @@ addpath 'ZH15'
 addpath 'Car'
 addpath 'functions'
 
-start_WW20_Fig1
+%start_WW20_Fig1
 %start_GL20_Fig3
 %start_ZH15
 
 Car_token = 0;
-%start_Car
+start_Car
 
 %%%%%%%%%%%%%%%%%%% CHOOSE SIMULATION PARAMETERS %%%%%%%%%%%%%%%%%%%%%%%%%%
 horizon = 100;
