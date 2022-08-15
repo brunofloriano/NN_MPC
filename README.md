@@ -7,9 +7,9 @@ Folder includes the NN-based MPC algorithm to achieve consensus in MAS for quadr
 ### How to run algorithm
 The main file is "main.m". In order to run it, uncomment line:
 
-* Line 18 - "start_WW20_Fig1" to run linear system (based on Wang et al. (2018));
-* Line 19 - "start_GL20_Fig3" to run system with disturbances (based on Gao et al. (2020));
-* Line 23 - "start_Car" to run nonlinear robot-car system.
+* Line 17 - "start_WW20_Fig1" to run linear system (based on Wang et al. (2018));
+* Line 18 - "start_GL20_Fig3" to run system with disturbances (based on Gao et al. (2020));
+* Line 21 - "start_Car" to run nonlinear robot-car system.
 
 The output is the evolution of the system's states over time.
 
