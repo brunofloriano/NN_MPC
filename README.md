@@ -1,6 +1,9 @@
 # NN_MPC
 Neural network-based (NN) Model Predictive Control (MPC) algorithm to control a multi-agent system (MAS) with stochastic communication topology.
 
+Paper available: https://www.sciencedirect.com/science/article/pii/S095219762200361X
+Floriano, B. R., Vargas, A. N., Ishihara, J. Y., & Ferreira, H. C. (2022). Neural-network-based model predictive control for consensus of nonlinear systems. Engineering Applications of Artificial Intelligence, 116, 105327.
+
 ## Algorithm folder
 Folder includes the NN-based MPC algorithm to achieve consensus in MAS for quadrotor fleet system, system with disturbances and nonlinear robot-car system.
 
